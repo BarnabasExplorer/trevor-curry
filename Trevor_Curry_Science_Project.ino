@@ -11,7 +11,8 @@ void setup() {
   pinMode(4,INPUT_PULLUP);
   pinMode(8,OUTPUT);
   pinMode(2,INPUT);
- 
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
 }
 
 void loop() {
@@ -20,6 +21,8 @@ void loop() {
   delay(3000);
 
   Serial.println("Waiting to drop...");
+  digitalWrite(13,LOW);
+  digitalWrite(12,HIGH);
   int button=digitalRead(4);
   while(button==1){
     // do nothing
@@ -29,7 +32,8 @@ void loop() {
   //this command demagnetizes the magnet
   digitalWrite(8,LOW);
   int sensor=digitalRead(2);
-
+  digitalWrite(12,LOW);
+  digitalWrite(13,HIGH); 
   //delay to compensate for time to turn off electromagnet
   delay(10);
   ti=millis();
@@ -77,5 +81,4 @@ void loop() {
   delay(500);
   Serial.println("------------------------------------------------------------------------------------");
 }
-
 
